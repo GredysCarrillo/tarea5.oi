@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Inicio de Sesión</title>
+</head>
+<body>
+  <div id="contenido-inicio" style="display: block;">
+    <section class="form-login">
+      <h4>Iniciar Sesión</h4>
+      <input class="controls" type="email" name="login-correo" id="login-correo" placeholder="Ingrese su Correo">
+      <input class="controls" type="password" name="login-contrasena" id="login-contrasena" placeholder="Ingrese su Contraseña">
+      <button class="botons" type="button" onclick="iniciarSesion()">Iniciar Sesión</button>
+    </section>
+  </div>
+  
+  <script>
+    // Simulación de usuarios registrados
+    const usuariosRegistrados = [
+      { correo: "gredys@gmail.com", contrasena: "A98$te.23" }
+    ];
+
+    const passwordPattern = /^[a-zA-ZáàâäãåæçéèêëíìîïñóòôöõøúùûüýÿýźżšžÀÁÂÄÃÅÆÇÉÈÊËÍÌÎÏÑÓÒÔÖÕØÚÙÛÜÝŸŹŻŠŽ0-9\-!"#$%&()*,./:;?@[\]^_`{|}~+<=>]{6,}$/;
+
+    function iniciarSesion() {
+      var loginCorreo = document.getElementById("login-correo").value;
+      var loginContrasena = document.getElementById("login-contrasena").value;
+
+      // Buscar el usuario en la simulación de usuarios registrados
+      const usuarioEncontrado = usuariosRegistrados.find(user =>
+        user.correo === loginCorreo && passwordPattern.test(loginContrasena)
+      );
+
+      if (usuarioEncontrado) {
+        // Redirigir a la biografía después de la autenticación exitosa
+        window.location.href = "principal.html";
+      } else {
+        alert("Inicio de sesión incorrecto. Por favor, verifique sus credenciales.");
+      }
+    }
+  </script>
+</body>
+</html>
